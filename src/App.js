@@ -1,28 +1,37 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, { useContext, useReducer } from 'react';
+
+import Store, { Filter } from "./context";
+import todoReducer from "./reducers/todoReducer"
+import visibilityFilterReducer from "./reducers/visibilityFilterReducer"
+import AddTodo from "./containers/AddTodo";
+import TodoList from "./containers/TodoList";
+import Footer from "./containers/Footer"
+import Header from "./components/Header"
+
 import './App.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+function App() {
+
+  // Context used to manage todo list
+  const todoStore = useContext(Store);
+  const [todoState, todoDispatch] = useReducer(todoReducer, todoStore)
+  // Context used to manage visible filter list
+  const filterStore = useContext(Filter);
+  const [filterState, filterDispatch] = useReducer(visibilityFilterReducer, filterStore);
+
+  return (
+    <Store.Provider value={{ todoState, todoDispatch }}>
+      <Filter.Provider value={{ filterState, filterDispatch }}>
+        <div>
+          <Header />
+          <AddTodo />
+          <TodoList />
+          <Footer />
+        </div>
+      </Filter.Provider>
+    </Store.Provider>
+
+  );
 }
 
 export default App;
