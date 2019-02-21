@@ -10,15 +10,16 @@ const isNotCompletedAll = todos => todos.some(t => !t.completed);
 
 const toggleTodo = (todos, id) =>
     todos.map(t => (t.id !== id ? t : createToggledTodo(t)));
+const toggleAllTodos = todos => todos.map(t => createToggledTodo(t));
 
-const toggleAllTodos = (todos, filter) => {
+const toggleAllTodosByFilter = (todos, filter) => {
     switch (filter) {
         case 'SHOW_COMPLETED':
             return todos.map(t => t.completed ? createToggledTodo(t) : t);
         case 'SHOW_ACTIVE':
             return todos.map(t => !t.completed ? createToggledTodo(t) : t);
         default:
-            return isNotCompletedAll(todos) ? makeDoneAllTodos(todos) : todos.map(t => createToggledTodo(t));
+            return isNotCompletedAll(todos) ? makeDoneAllTodos(todos) : toggleAllTodos(todos);
     }
 }
 
@@ -34,7 +35,7 @@ const todoReducer = (state = [], action) => {
         case "TOGGLE_TODO":
             return toggleTodo(state, action.id);
         case "TOGGLE_ALL_TODOS":
-            return toggleAllTodos(state, action.filter);
+            return toggleAllTodosByFilter(state, action.filter);
         default:
             return state;
     }
