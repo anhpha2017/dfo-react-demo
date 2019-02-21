@@ -11,25 +11,25 @@ import Header from "./components/Header"
 import './App.css';
 
 function App() {
-
-  // Context used to manage todo list
+  // Context used to manage todos
   const todoStore = useContext(Store);
   const [todoState, todoDispatch] = useReducer(todoReducer, todoStore)
   // Context used to manage visible filter list
   const filterStore = useContext(Filter);
   const [filterState, filterDispatch] = useReducer(visibilityFilterReducer, filterStore);
 
+
   return (
-    <Store.Provider value={{ todoState, todoDispatch }}>
+    <div className="container">
+      <Header />
       <Filter.Provider value={{ filterState, filterDispatch }}>
-        <div className="container">
-          <Header />
-          <AddTodo />
+        <Store.Provider value={{ todoState, todoDispatch }}>
+          <AddTodo dispatch={todoDispatch} />
           <TodoList />
-          <Footer />
-        </div>
+        </Store.Provider>
+        <Footer />
       </Filter.Provider>
-    </Store.Provider>
+    </div>
 
   );
 }

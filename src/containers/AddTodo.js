@@ -1,8 +1,8 @@
-import React, { useContext, useState } from "react";
-import Store from "../context";
+import React, { useState } from "react";
+import { addTodo } from "../actions/todoActionCreator";
 import "./AddTodo.css";
-export default function AddTodo() {
-    const { todoDispatch } = useContext(Store);
+const AddTodo = React.memo(({ dispatch }) => {
+    // const { dispatch } = useContext(Store);
 
     // Creating a local state to have currently writing
     // todo item that will be sent to the global store.
@@ -13,7 +13,7 @@ export default function AddTodo() {
     }
 
     function handleTodoAdd() {
-        todoDispatch({ type: "ADD_TODO", text: todo });
+        dispatch((addTodo(todo)));
         setTodo("");
     }
 
@@ -32,4 +32,6 @@ export default function AddTodo() {
             />
         </div>
     );
-}
+})
+
+export default AddTodo;
