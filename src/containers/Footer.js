@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 
-import Store, { Filter } from "../context"
+import { Filter } from "../context"
 import FilterButton from "../components/FilterButton"
 
 import "./Footer.css";
@@ -8,7 +8,7 @@ import "./Footer.css";
 
 const Footer = () => {
 
-    const { todoDispatch } = useContext(Store);
+    // const { todoDispatch } = useContext(Store);
     const { filterState, filterDispatch } = useContext(Filter);
 
     const handleFilterChange = (filter) => filterDispatch({ type: "SET_VISIBILITY_FILTER", filter });
@@ -22,9 +22,7 @@ const Footer = () => {
 
     return (
         <div>
-            <div className="footer-row">
-                <button className="btn-main" onClick={() => todoDispatch({ type: "TOGGLE_ALL_TODOS" })}>Toggle All</button>
-            </div>
+
             <div className="footer-row">
                 <label>Filter</label>
                 {filterButtons}
