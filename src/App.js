@@ -22,7 +22,7 @@ function App() {
   return (
     <Store.Provider value={{ todoState, todoDispatch }}>
       <Filter.Provider value={{ filterState, filterDispatch }}>
-        <div>
+        <div className="container">
           <Header />
           <AddTodo />
           <TodoList />

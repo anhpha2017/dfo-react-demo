@@ -1,8 +1,10 @@
 import React from "react";
+import "./FilterButton.css";
 
-const FilterButton = ({ filter, text, onFilterButtonClick, active }) => {
+const FilterButton = ({ filter, text, onFilterButtonClick, currentFilter }) => {
+    const cssClass = filter === currentFilter ? "filter-button-selected" : "filter-button";
     return (
-        <button onClick={() => onFilterButtonClick(filter)}>{text}</button>
+        <button className={cssClass} onClick={() => onFilterButtonClick(filter)}>{text}</button>
     )
 }
 export default FilterButton;

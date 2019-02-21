@@ -1,0 +1,32 @@
+.todo{
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    color: black;
+}
+
+.todo input[type=checkbox]{
+    margin-right: 14px;
+    border-radius: 0px;
+}
+
+.done {
+    color: grey;
+}
+
+.done input[type=checkbox]{
+    border-color: rgb(108, 117, 125);
+    color: rgb(108, 117, 125);
+    background-color: white;
+    opacity: 0.4;
+}
+
+.button-delete-todo{
+    /* float: right; */
+    /* display:inline-block; */
+    /* margin-top: 12px;
+    margin-bottom: 12px; */
+    
+}

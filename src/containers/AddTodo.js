@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import Store from "../context";
-
+import "./AddTodo.css";
 export default function AddTodo() {
     const { todoDispatch } = useContext(Store);
 
@@ -22,7 +22,7 @@ export default function AddTodo() {
     }
 
     return (
-        <div>
+        <div className="add-todo">
             <input
                 value={todo}
                 autoFocus={true}

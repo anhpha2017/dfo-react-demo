@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import Todo from '../components/Todo'
 import Store, { Filter } from "../context"
+import "./TodoList.css";
 
 const handleOnToggle = (id, dispatch) => dispatch({ type: "TOGGLE_TODO", id });
 const handleRemoveTodo = (id, dispatch) => dispatch({ type: "REMOVE_TODO", id });
@@ -26,7 +27,7 @@ const TodoList = () => {
     // return null;
     return (
 
-        <div>
+        <ul className="todo-list">
             {getTodos(todoState, filterState).map(todo =>
                 <Todo
                     key={todo.id}
@@ -35,7 +36,7 @@ const TodoList = () => {
                     onRemove={() => handleRemoveTodo(todo.id, todoDispatch)}
                 />
             )}
-        </div>
+        </ul>
     )
 }
 

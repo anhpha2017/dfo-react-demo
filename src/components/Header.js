@@ -1,10 +1,10 @@
 import React from "react";
-
+import "./Header.css";
 const Header = (props) => (
     <header>
-        <p>
+        <h1>
             Todo App
-          </p>
+          </h1>
     </header>
 );
 

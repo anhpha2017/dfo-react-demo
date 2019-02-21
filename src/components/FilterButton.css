@@ -1,0 +1,20 @@
+.filter-button{
+    width: 100px;
+}
+
+.filter-button:focus{
+    background-color: green;
+    color: white;
+}
+
+.filter-button-selected{
+    background-color: green;
+    color: white;
+    width: 100px;
+}
+
+.filter-button:hover {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+  }
